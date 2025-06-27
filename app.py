@@ -71,6 +71,6 @@ if st.button("Predict"):
 
 # ---------------- Footer ----------------
 st.markdown("---")
-st.caption("Built with ❤️ by Selassie Wunimboribin | Powered by Streamlit")
+st.caption("Built with LOVE by Selassie Wunimboribin | Powered by Streamlit")
 
 

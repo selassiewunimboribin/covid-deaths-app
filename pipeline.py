@@ -67,7 +67,7 @@ def build_and_fit_pipeline(csv_path):
 
 if __name__ == "__main__":
     # 📥 CSV file location
-    csv_path = r"C:\Users\DELL\Downloads\datasets\covid_death.csv"
+    csv_path = "covid_death.csv"
     pipeline = build_and_fit_pipeline(csv_path)
 
     # 💾 Save pipeline to file

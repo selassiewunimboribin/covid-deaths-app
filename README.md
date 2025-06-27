@@ -15,7 +15,7 @@ Can be deployed locally or on Streamlit Cloud
 🚀 Try it Online
 
 You can use the app here:
-👉 Streamlit Cloud App Link 
+👉 [Streamlit Cloud App Link ](https://covid-deaths-app-ogtv7xm8xcovbjhwjwts5l.streamlit.app/)
 
 📂 Project Structure
 

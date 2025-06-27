@@ -13,6 +13,7 @@ def build_and_fit_pipeline(csv_path):
 
     # 2. Drop irrelevant columns
     columns_to_drop = [
+        'iso_code',  # ✅ REMOVE iso_code entirely
         'new_cases_smoothed', 'icu_patients', 'icu_patients_per_million',
         'hosp_patients', 'hosp_patients_per_million',
         'weekly_icu_admissions', 'weekly_icu_admissions_per_million',
@@ -29,7 +30,7 @@ def build_and_fit_pipeline(csv_path):
     y = covid_deaths['total_deaths'].head(30000)
 
     # 5. Define feature groups
-    cat_features = ['iso_code', 'continent', 'location', 'date']
+    cat_features = ['continent', 'location', 'date']  # ❌ iso_code removed
     cons_features = ['population']
     num_features = [
         'total_cases', 'new_cases', 'new_deaths',

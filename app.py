@@ -19,7 +19,6 @@ in a country or region based on current outbreak data.
 """)
 
 # ---------------- User inputs ----------------
-iso_code = st.text_input("ISO Code (e.g. USA, NGA, IND)", "USA")
 continent = st.selectbox(
     "Continent",
     ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "missing"]
@@ -47,7 +46,6 @@ weekly_hosp_adm_per_million = st.number_input("Weekly Hospital Admissions (per m
 # ---------------- Predict button ----------------
 if st.button("Predict"):
     row = pd.DataFrame([{
-        "iso_code": iso_code,
         "continent": continent,
         "location": location,
         "date": the_date.strftime("%Y-%m-%d"),

@@ -11,12 +11,12 @@ def load_pipeline():
 model = load_pipeline()
 
 # ---------------- Page header ----------------
-st.set_page_config(page_title="COVID-19 Total-Deaths Predictor")
-st.title("🦠 COVID-19 Total Deaths Predictor")
-st.markdown(
-    "Enter the current situation for a country/region and predict the "
-    "**cumulative total deaths** estimated by the model."
-)
+st.set_page_config(page_title="COVID-19 Death Predictor", layout="centered")
+st.title("🧮 COVID-19 Cumulative Death Predictor")
+st.markdown("""
+This app uses a machine learning model to predict the **total COVID-19 deaths**
+in a country or region based on current outbreak data.
+""")
 
 # ---------------- User inputs ----------------
 iso_code = st.text_input("ISO Code (e.g. USA, NGA, IND)", "USA")
@@ -24,25 +24,25 @@ continent = st.selectbox(
     "Continent",
     ["Africa", "Asia", "Europe", "North America", "South America", "Oceania", "missing"]
 )
-location  = st.text_input("Country / Region", "United States")
-the_date  = st.date_input("Date", date(2021, 10, 1))
+location = st.text_input("Country / Region", "United States")
+the_date = st.date_input("Date", date(2021, 10, 1))
 
 col1, col2 = st.columns(2)
 with col1:
-    population   = st.number_input("Population",                0, value=331_000_000)
-    total_cases  = st.number_input("Total Cases",               0, value=40_000_000)
-    new_cases    = st.number_input("New Cases (that day)",      0, value=100_000)
-    total_tests  = st.number_input("Total Tests",               0, value=550_000_000)
+    population = st.number_input("Population", 0, value=331_000_000)
+    total_cases = st.number_input("Total COVID Cases", 0, value=40_000_000)
+    new_cases = st.number_input("New Cases Today", 0, value=100_000)
+    total_tests = st.number_input("Total Tests", 0, value=550_000_000)
 with col2:
-    new_deaths        = st.number_input("New Deaths (that day)",        0, value=1500)
-    total_cases_pm    = st.number_input("Total Cases / Million",        0.0, value=120_000.0)
-    new_cases_pm      = st.number_input("New Cases  / Million",         0.0, value=300.0)
-    total_deaths_pm   = st.number_input("Total Deaths / Million",       0.0, value=2000.0)
-    new_deaths_pm     = st.number_input("New Deaths / Million",         0.0, value=5.0)
+    new_deaths = st.number_input("New Deaths Today", 0, value=1500)
+    total_cases_pm = st.number_input("Total Cases per Million", 0.0, value=120_000.0)
+    new_cases_pm = st.number_input("New Cases per Million", 0.0, value=300.0)
+    total_deaths_pm = st.number_input("Total Deaths per Million", 0.0, value=2000.0)
+    new_deaths_pm = st.number_input("New Deaths per Million", 0.0, value=5.0)
 
-reproduction_rate           = st.number_input("Reproduction Rate (R)",      0.0, value=1.1)
-weekly_hosp_adm             = st.number_input("Weekly Hosp. Admissions",    0.0)
-weekly_hosp_adm_per_million = st.number_input("Weekly Hosp. Adm. / Million",0.0)
+reproduction_rate = st.number_input("Reproduction Rate (R)", 0.0, value=1.1)
+weekly_hosp_adm = st.number_input("Weekly Hospital Admissions", 0.0)
+weekly_hosp_adm_per_million = st.number_input("Weekly Hospital Admissions (per million)", 0.0)
 
 # ---------------- Predict button ----------------
 if st.button("Predict"):
@@ -70,5 +70,9 @@ if st.button("Predict"):
         st.success(f"Predicted cumulative deaths: **{pred:,.0f}**")
     except Exception as e:
         st.error(f"❌ Prediction failed: {e}")
+
+# ---------------- Footer ----------------
+st.markdown("---")
+st.caption("Built with ❤️ by Selassie Wunimboribin | Powered by Streamlit")
 
 
